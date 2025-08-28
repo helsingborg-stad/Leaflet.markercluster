@@ -1,5 +1,5 @@
 {
-	"name": "leaflet.markercluster",
+	"name": "leaflet.markercluster.factory.init",
 	"repository": "https://github.com/Leaflet/Leaflet.markercluster",
 	"version": "1.5.4",
 	"description": "Provides Beautiful Animated Marker Clustering functionality for Leaflet",
