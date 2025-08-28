@@ -23,8 +23,8 @@ export function addMarkerClusterToLeaflet(L) {
 	extendMarkerWithOpacity(L);
 
 	// Create the main classes using the provided Leaflet instance
-	const MarkerClusterGroup = createMarkerClusterGroup(L);
-	const MarkerCluster = createMarkerCluster(L);
+	var MarkerClusterGroup = createMarkerClusterGroup(L);
+	var MarkerCluster = createMarkerCluster(L);
 
 	// Add to the Leaflet instance
 	L.MarkerClusterGroup = MarkerClusterGroup;
