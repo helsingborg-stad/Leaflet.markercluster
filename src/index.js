@@ -3,10 +3,9 @@ import { createMarkerClusterGroup } from './MarkerClusterGroup.js';
 import { createMarkerCluster } from './MarkerCluster.js';
 import { extendMarkerWithOpacity } from './MarkerOpacity.js';
 import { createDistanceGrid } from './DistanceGrid.js';
-// TODO: Need to refactor these to work with factory pattern:
-// import './MarkerCluster.QuickHull.js';
-// import './MarkerCluster.Spiderfier.js';
-// import './MarkerClusterGroup.Refresh.js';
+import { addQuickHullToMarkerCluster } from './MarkerCluster.QuickHull.js';
+import { addSpiderfierToMarkerCluster } from './MarkerCluster.Spiderfier.js';
+import { addRefreshToMarkerClusterGroup } from './MarkerClusterGroup.Refresh.js';
 
 /**
  * Add MarkerCluster functionality to a Leaflet instance
@@ -26,6 +25,11 @@ export function addMarkerClusterToLeaflet(L) {
 	var MarkerClusterGroup = createMarkerClusterGroup(L);
 	var MarkerCluster = createMarkerCluster(L);
 
+	// Add the extended functionality
+	addQuickHullToMarkerCluster(L, MarkerCluster);
+	addSpiderfierToMarkerCluster(L, MarkerCluster, MarkerClusterGroup);
+	addRefreshToMarkerClusterGroup(L, MarkerClusterGroup, MarkerCluster);
+
 	// Add to the Leaflet instance
 	L.MarkerClusterGroup = MarkerClusterGroup;
 	L.MarkerCluster = MarkerCluster;
@@ -41,4 +45,10 @@ if (typeof window !== 'undefined' && window.L) {
 }
 
 // Export individual classes for those who want them
-export { createMarkerClusterGroup, createMarkerCluster };
+export { 
+	createMarkerClusterGroup, 
+	createMarkerCluster,
+	addQuickHullToMarkerCluster,
+	addSpiderfierToMarkerCluster,
+	addRefreshToMarkerClusterGroup
+};
